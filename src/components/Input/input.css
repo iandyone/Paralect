@@ -1,0 +1,21 @@
+input {
+    width: 100%;
+    max-width: 500px;
+    min-height: 40px;
+    padding: 8px 14px 8px 44px;
+    background: #ffffff;
+    border-radius: 6px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.01em;
+    color: #000000;
+}
+
+@media (max-width: 992px) {
+    input {
+        max-width: none;
+    }
+}
