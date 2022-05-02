@@ -1,0 +1,72 @@
+.user__data {
+    flex: 0 0 295px;
+    display: flex;
+    flex-direction: column;
+}
+.user__avatar {
+    width: 280px;
+    height: 280px;
+    margin: 0px 0px 28px 0px;
+}
+.user__avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.user__name {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 130%;
+    margin: 0px 0px 8px 0px;
+}
+.user__link {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 133.333%;
+    color: #0064eb;
+    margin-bottom: 34px;
+}
+.user__media {
+    display: flex;
+    column-gap: 20px;
+}
+
+.followers {
+    background: url("../../assets/images/User/followers.svg") left no-repeat;
+}
+.following {
+    background: url("../../assets/images/User/following.svg") left no-repeat;
+}
+
+@media (max-width: 992px) {
+    .user__data {
+        flex-basis: auto;
+        margin-bottom: 40px;
+        align-items: center;
+    }
+    .user__avatar {
+        width: 250px;
+        height: 250px;
+        margin: 0px 0px 12px 0px;
+    }
+    .user__name {
+        margin-bottom: 4px;
+    }
+    .user__link {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user__data {
+        align-items: flex-start;
+    }
+    .user__avatar {
+        width: 150px;
+        height: 150px;
+    }
+    .user__media {
+        flex-direction: column;
+        row-gap: 8px;
+    }
+}
