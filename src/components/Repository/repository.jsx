@@ -4,9 +4,9 @@ export function Repository(props) {
     return (
         <div className="repos__item">
             <h4 className="repos__name">
-                <a target="blank" href="www.google.com">{props.repoName}</a>
+                <a href={props.url} target="_blank" rel="noreferrer">{props.repoName}</a>
             </h4>
-            <p className="repo__description">{props.description}</p>
+            <p className="repo__description">{props.description ?? "Description not found"}</p>
         </div>
     );
 }

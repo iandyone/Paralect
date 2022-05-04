@@ -1,9 +1,14 @@
 .app__content {
     flex: 1 1 auto;
+    display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 40px 0 31px 0;
-    background: #e5e5e5;
+    /* align-items: center; */
+    padding: 28px 0 31px 0;
+    background: #F9F9F9;
+}
+.content__container {
+    display: flex;
+    width: 100%;
 }
 .content__body {
     display: flex;
@@ -43,10 +48,10 @@
 }
 
 .followers {
-    background: url("../../assets/images/User/followers.svg") left no-repeat;
+    background: url("../../assets/images/Content/followers.svg") left no-repeat;
 }
 .following {
-    background: url("../../assets/images/User/following.svg") left no-repeat;
+    background: url("../../assets/images/Content/following.svg") left no-repeat;
 }
 .repos {
     flex: 1 1 auto;

@@ -1,5 +1,6 @@
 .user__data {
-    flex: 0 0 295px;
+    padding-top: 12px;
+    flex: 0 0 293px;
     display: flex;
     flex-direction: column;
 }
@@ -28,14 +29,15 @@
 }
 .user__media {
     display: flex;
-    column-gap: 20px;
+    /* column-gap: 20px; */
+    justify-content: space-between;
 }
 
 .followers {
-    background: url("../../assets/images/User/followers.svg") left no-repeat;
+    background: url("../../assets/images/Content/followers.svg") left no-repeat;
 }
 .following {
-    background: url("../../assets/images/User/following.svg") left no-repeat;
+    background: url("../../assets/images/Content/following.svg") left no-repeat;
 }
 
 @media (max-width: 992px) {

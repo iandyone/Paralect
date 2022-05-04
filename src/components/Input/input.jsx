@@ -4,14 +4,19 @@ import "./input.css";
 
 
 export function Input(props) {
-    const temp = useSelector(store => store.input.headerInput);
     const dispatch = useDispatch();
+    const id = props.id;
+    const value = useSelector((store) => store.input[id]);
 
-    function setCurrentValue(...props) {
-        const [id, value] = props;
-        dispatch(setInputValueAction({id, value}));
-        console.log(temp);
+    /* --- DEBUG --- */
+    console.log(value)
+    /* ------------- */
+
+    function setCurrentValue(id, value) {
+        /* const [id, value] = props; */
+        dispatch(setInputValueAction({ id, value }));
     }
 
-    return <input type={props.type} id={props.id} className={props.className} placeholder={props.placeholder} onChange={(event) => setCurrentValue(event.target.id, event.target.value)} />
+    return <input type={props.type} id={props.id} className={props.className} placeholder={props.placeholder} value={value
+    } onChange={(event) => setCurrentValue(event.target.id, event.target.value)} />
 }

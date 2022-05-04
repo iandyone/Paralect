@@ -1,18 +1,29 @@
 import "./userData.css";
-import avatar from "../../assets/images/User/photo.jpg";
+/* import avatar from "../../assets/images/Content/photo.jpg"; */
 import { UserActivity } from "../UserActivity/userActivity";
+import { useSelector } from "react-redux";
+import { numFormatter } from "../../helpers/numFormatter";
 
 export function UserData() {
+
+    /* const status = useSelector((store) => store.user.isFetching); */
+    const avatar = useSelector((store) => store.user.user.avatar_url);
+    const login = useSelector((store) => store.user.user.login);
+    const profile = useSelector((store) => store.user.user.html_url);
+    const userName = useSelector((store) => store.user.user.name) ?? login;
+    const followers = numFormatter(+useSelector((store) => store.user.user.followers));
+    const following = numFormatter(+useSelector((store) => store.user.user.following));
+
     return (
         <div className="user__data">
             <div className="user__avatar">
                 <img src={avatar} alt="Аватар пользователя" />
             </div>
-            <h3 className="user__name">Dan Abramov</h3>
-            <a href="google.com" className="user__link">gaearon</a>
+            <h3 className="user__name">{userName}</h3>
+            <a href={profile} target="_blank" rel="noreferrer" className="user__link">{login}</a>
             <div className="user__media">
-                <UserActivity className={"user__activity followers"} content={"65.8k followers"} />
-                <UserActivity className={"user__activity following"} content={"171 following"} />
+                <UserActivity className={"user__activity followers"} content={`${followers} followers`} />
+                <UserActivity className={"user__activity following"} content={`${following} following`} />
             </div>
         </div>
     );
