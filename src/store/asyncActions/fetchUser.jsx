@@ -1,4 +1,4 @@
-import { fetchingHasStartedAction, fetchingIsDoneAction, fetchReposAction, fetchUserAction, setResponseStatusAction } from "../actions/userActions";
+import { fetchingHasStartedAction, fetchingHasDoneAction, fetchReposAction, fetchUserAction, setResponseStatusAction } from "../actions/userActions";
 
 export function fetchUser(username) {
     return (dispatch) => {
@@ -6,20 +6,18 @@ export function fetchUser(username) {
         fetch(`https://api.github.com/users/${username}`)
             .then((response) => {
                 dispatch(setResponseStatusAction(response));
-                if (response.status !== 404) {
-                    fetch(`https://api.github.com/users/${username}/repos`)
-                        .then((repos) => repos.json())
-                        .then((json) => dispatch(fetchReposAction(json)));
-                    return response;
-                } else {
-                    throw new Error ("Fetching error: user not found");
-                }
+                return response;
             })
             .then((response) => response.json())
             .then((json) => { console.log(json); return json })
             .then((json) => { dispatch(fetchUserAction(json)) })
-            .catch((error) => console.log(error.message))
-            .finally(() => dispatch(fetchingIsDoneAction()));
+            .catch((error) => console.log(error.message));
+
+        fetch(`https://api.github.com/users/${username}/repos`)
+            .then((repos) => repos.json())
+            .then((json) => dispatch(fetchReposAction(json)))
+            .then(() => dispatch(fetchingHasDoneAction()))
+            .catch ((error) => console.log(error.message));
     };
 }
 

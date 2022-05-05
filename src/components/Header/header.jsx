@@ -8,20 +8,14 @@ import { showUserDataAction } from "../../store/actions/contentActions";
 
 export function Header() {
     const dispatch = useDispatch();
-    const userName = useSelector(store => store.input.userInput)
+    const userName = useSelector(store => store.input.userInput);
 
     function getUser(userName) {
+        console.log(`Header.jsx: поиск пользователя ${userName}`);
         dispatch(fetchUser(userName));
         dispatch(showUserDataAction());
     }
 
-    /*---- DEBUG---- */
-    const temp = useSelector((store) => store.input.userInput);
-    function test(e) {
-        e.preventDefault();
-        console.log(`Header.jsx: поиск пользователя ${temp}`);
-    }
-    /* ----------------------------------- */
 
     return (
         <header className="app__header header">
@@ -30,9 +24,9 @@ export function Header() {
                     <div className="header__logo">
                         <img src={logo} alt="Логотип" />
                     </div>
-                    <form action="#" className="header__form form" onSubmit={(e) => test(e)}>
+                    <form action="#" className="header__form form" onSubmit={() => getUser(userName)}>
                         <Input type={"text"} id={"userInput"} className={"header__input"} placeholder={"Enter GitHub username"} />
-                        <button type="submit" className="header__button" onClick={() => getUser(userName)}>
+                        <button type="submit" className="header__button">
                             <img src={search} alt="Иконка поиска" />
                         </button>
                     </form>

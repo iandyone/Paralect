@@ -9,12 +9,11 @@ export function Input(props) {
     const value = useSelector((store) => store.input[id]);
 
     /* --- DEBUG --- */
-    console.log(value)
+   /*  console.log(value) */
     /* ------------- */
 
     function setCurrentValue(id, value) {
-        /* const [id, value] = props; */
-        dispatch(setInputValueAction({ id, value }));
+        dispatch(setInputValueAction({   id, value }));
     }
 
     return <input type={props.type} id={props.id} className={props.className} placeholder={props.placeholder} value={value

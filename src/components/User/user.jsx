@@ -19,16 +19,10 @@ export function User() {
                     <h2 className="repos__title">Repositories ({reposCounter})</h2>
                     <div className="repos__repositories">
                         {
-                            repos.map((repository, index) => {
-                                console.log(`index: ${index}`)
+                            repos.map((repository) => {
                                 return getRepository(repository.name, repository.description, repository.html_url)
                             })
                         }
-
-                        {/* <Repository repoName={"React-router repo"} description={"Tweak React components in real time. Deprecated: use Fast Refresh instead."} />
-                        <Repository repoName={"React-router repo"} description={"Tweak React components in real time. Deprecated: use Fast Refresh instead."} />
-                        <Repository repoName={"React-router repo"} description={"Tweak React components in real time. Deprecated: use Fast Refresh instead."} />
-                        <Repository repoName={"React-router repo"} description={"Tweak React components in real time. Deprecated: use Fast Refresh instead."} /> */}
                     </div>
                 </div>
             </div>
