@@ -3,8 +3,8 @@ import { FETCHING_HAS_STARTED, FETCHING_HAS_DONE, FETCH_USER, SET_RESPONSE_STATU
 const initialState = {
     user: [],
     repositories: [],
+    status: 0,
     isFetching: false,
-    status: 200,
 };
 
 export function userReducer(state = initialState, action) {

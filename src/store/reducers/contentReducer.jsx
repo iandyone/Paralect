@@ -1,4 +1,4 @@
-import { SHOW_USER_DATA } from "../actions/contentActions";
+import { SHOW_CONTENT } from "../actions/contentActions";
 
 const initialState = {
     showHomeScreen: true,
@@ -6,7 +6,7 @@ const initialState = {
 
 export function contentReducer(state = initialState, action) {
     switch (action.type) {
-        case SHOW_USER_DATA:
+        case SHOW_CONTENT:
             return { ...state, showHomeScreen: false };
         default:
             return state;

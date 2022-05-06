@@ -1,3 +1,3 @@
-export const SHOW_USER_DATA = "SHOW_USER_DATA";
+export const SHOW_CONTENT = "SHOW_CONTENT";
 
-export const showUserDataAction = () => ({ type: SHOW_USER_DATA });
+export const showContentAction = () => ({ type: SHOW_CONTENT });

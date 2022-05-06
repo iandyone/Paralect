@@ -1,21 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/images/Header/logo.svg";
-import search from "../../assets/images/Header/search.svg";
+import searchIcon from "../../assets/images/Header/search.svg";
 import { Input } from "../Input/input.jsx";
 import { fetchUser } from "../../store/asyncActions/fetchUser";
 import "./header.css";
-import { showUserDataAction } from "../../store/actions/contentActions";
+import { showContentAction } from "../../store/actions/contentActions";
 
 export function Header() {
     const dispatch = useDispatch();
     const userName = useSelector(store => store.input.userInput);
 
-    function getUser(userName) {
+    function getUser(e, userName) {
+        e.preventDefault();
         console.log(`Header.jsx: поиск пользователя ${userName}`);
         dispatch(fetchUser(userName));
-        dispatch(showUserDataAction());
+        dispatch(showContentAction());
     }
-
 
     return (
         <header className="app__header header">
@@ -24,10 +24,10 @@ export function Header() {
                     <div className="header__logo">
                         <img src={logo} alt="Логотип" />
                     </div>
-                    <form action="#" className="header__form form" onSubmit={() => getUser(userName)}>
+                    <form action="#" className="header__form form" onSubmit={(e) => getUser(e, userName)}>
                         <Input type={"text"} id={"userInput"} className={"header__input"} placeholder={"Enter GitHub username"} />
                         <button type="submit" className="header__button">
-                            <img src={search} alt="Иконка поиска" />
+                            <img src={searchIcon} alt="Иконка поиска" />
                         </button>
                     </form>
                 </div>
