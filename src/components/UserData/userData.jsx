@@ -1,12 +1,9 @@
 import "./userData.css";
-/* import avatar from "../../assets/images/Content/photo.jpg"; */
 import { UserActivity } from "../UserActivity/userActivity";
 import { useSelector } from "react-redux";
 import { numFormatter } from "../../helpers/numFormatter";
 
 export function UserData() {
-
-    /* const status = useSelector((store) => store.user.isFetching); */
     const avatar = useSelector((store) => store.user.user.avatar_url);
     const login = useSelector((store) => store.user.user.login);
     const profile = useSelector((store) => store.user.user.html_url);

@@ -8,14 +8,11 @@ export function Input(props) {
     const id = props.id;
     const value = useSelector((store) => store.input[id]);
 
-    /* --- DEBUG --- */
-   /*  console.log(value) */
-    /* ------------- */
-
     function setCurrentValue(id, value) {
-        dispatch(setInputValueAction({   id, value }));
+        dispatch(setInputValueAction({ id, value }));
     }
 
-    return <input type={props.type} id={props.id} className={props.className} placeholder={props.placeholder} value={value
-    } onChange={(event) => setCurrentValue(event.target.id, event.target.value)} />
+    return (
+        <input type={props.type} id={props.id} className={props.className} placeholder={props.placeholder} value={value} onChange={(event) => setCurrentValue(event.target.id, event.target.value)} />
+    );
 }

@@ -1,21 +1,21 @@
-.content__home {
+.info-placeholder {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.home__picture {
+.info-placeholder__picture {
     width: 110px;
     height: 110px;
     margin-bottom: 24px;
 }
-.home__picture img {
+.info-placeholder__picture img {
     width: 100%;
     height: 100%;
 }
-.home__text {
-    max-width: 210px;
+.info-placeholder__text {
+    max-width: 227px;
     font-size: 22px;
     line-height: 140%;
     text-align: center;

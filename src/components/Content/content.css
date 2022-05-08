@@ -1,11 +1,8 @@
 .app__content {
     flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
     padding: 28px 0 31px 0;
     background: #F9F9F9;
+    display: flex;
 }
 .content__container {
     display: flex;
@@ -108,9 +105,6 @@
 }
 
 @media (max-width: 480px) {
-    .content__body {
-        align-items: flex-start;
-    }
     .content__data {
         align-items: flex-start;
     }

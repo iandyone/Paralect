@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/images/Header/logo.svg";
 import searchIcon from "../../assets/images/Header/search.svg";
 import { Input } from "../Input/input.jsx";
-import { fetchUser } from "../../store/asyncActions/fetchUser";
 import "./header.css";
 import { showContentAction } from "../../store/actions/contentActions";
+import { setRequestValueAction } from "../../store/actions/inputActions";
 
 export function Header() {
     const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export function Header() {
     function getUser(e, userName) {
         e.preventDefault();
         console.log(`Header.jsx: поиск пользователя ${userName}`);
-        dispatch(fetchUser(userName));
+        dispatch(setRequestValueAction(userName));
         dispatch(showContentAction());
     }
 

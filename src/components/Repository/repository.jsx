@@ -6,7 +6,7 @@ export function Repository(props) {
             <h4 className="repos__name">
                 <a href={props.url} target="_blank" rel="noreferrer">{props.repoName}</a>
             </h4>
-            <p className="repo__description">{props.description ?? "Description not found"}</p>
+            <p className="repos__description">{props.description ?? "Description not found"}</p>
         </div>
     );
 }

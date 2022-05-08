@@ -12,7 +12,7 @@ function App() {
         <div className="app">
             <Header />
             {(showHomeScreen) ?
-                <InfoPlaceholder image={homeIcon} alt={"Главная"} text={"Start with searching a GitHub user"} />
+                <InfoPlaceholder image={homeIcon} alt={"Главная"} text={"Start with searching  a GitHub user"} />
                 :
                 <Content />
             }
