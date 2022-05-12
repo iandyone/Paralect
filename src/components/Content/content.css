@@ -1,7 +1,7 @@
 .app__content {
     flex: 1 1 auto;
-    padding: 28px 0 31px 0;
-    background: #F9F9F9;
+    padding: 28px 0px;
+    background: #f9f9f9;
     display: flex;
 }
 .content__container {
@@ -51,9 +51,8 @@
 .following {
     background: url("../../assets/images/Content/following.svg") left no-repeat;
 }
-.repos {
+/* .repos {
     flex: 1 1 auto;
-    margin-bottom: 26px;
 }
 .repos__title {
     font-weight: 600;
@@ -67,7 +66,7 @@
 }
 .content__pagination {
     text-align: right;
-}
+} */
 
 @media (max-width: 1200px) {
     .content__body {

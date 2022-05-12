@@ -1,0 +1,32 @@
+.pagination {
+    align-self: flex-end;
+    display: flex;
+}
+.pagination__pages-navigation {
+    margin: 0px 20px 0px 0px;
+}
+.pagination__pages {
+    display: flex;
+    cursor: pointer;
+}
+.pagination__page,
+.pagination__page-active {
+    border-radius: 3px;
+    min-width: 21px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #808080;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+}
+.pagination__page-active {
+    color: #fff;
+    background: #0064eb;
+}
+.pagination__page:not(:last-child),
+.pagination__page-active:not(:last-child) {
+    margin: 0px 16px 0px 0px;
+}

@@ -24,7 +24,6 @@ export function User() {
                                 <UserData />
                                 <UserRepositories />
                             </div>
-                            <div className="user__pagination">Пагинация</div>
                         </div>
             }
         </div>

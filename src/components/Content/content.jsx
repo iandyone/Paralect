@@ -4,35 +4,16 @@ import { User } from "../User/user";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchingHasStartedAction, fetchingHasDoneAction, fetchReposAction, fetchUserAction, setResponseStatusAction } from "../../store/actions/userActions";
+import { setCurrentPageAction } from "../../store/actions/pagitationActions";
 
 export function Content() {
     const dispatch = useDispatch();
     const request = useSelector((store) => store.input.request);
 
-    /* function fetchUser(username) {
-        return (dispatch) => {
-            dispatch(fetchingHasStartedAction());
-            fetch(`https://api.github.com/users/${username}`)
-                .then((response) => {
-                    dispatch(setResponseStatusAction(response));
-                    return response;
-                })
-                .then((response) => response.json())
-                .then((json) => { console.log(json); return json })
-                .then((json) => { dispatch(fetchUserAction(json)); return json;})
-                .then(() => dispatch(fetchingHasDoneAction()))
-                .catch((error) => console.log(error.message));
-
-            fetch(`https://api.github.com/users/${username}/repos`)
-                .then((repos) => repos.json())
-                .then((json) => dispatch(fetchReposAction(json)))
-                .then(() => dispatch(fetchingHasDoneAction()))
-                .catch((error) => console.log(error.message));
-        };
-    } */
     function fetchUser(username) {
         return (dispatch) => {
             dispatch(fetchingHasStartedAction());
+            dispatch(setCurrentPageAction(1));
             fetch(`https://api.github.com/users/${username}`)
                 .then((response) => {
                     dispatch(setResponseStatusAction(response));
@@ -64,7 +45,7 @@ export function Content() {
                             responses.forEach((item) => reposList = [...reposList, ...item]);
                             console.log("reposList: ", reposList);
                             dispatch(fetchReposAction(reposList));
-                            dispatch(fetchingHasDoneAction())
+                            dispatch(fetchingHasDoneAction());
                         })
                 })
                 .catch((error) => console.log(error.message));

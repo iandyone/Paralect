@@ -1,6 +1,8 @@
 .repos {
     flex: 1 1 auto;
-    margin-bottom: 26px;
+    display: flex;
+    flex-direction: column;
+    
 }
 .repos__title {
     font-weight: 600;
@@ -8,7 +10,10 @@
     line-height: 130%;
     margin-bottom: 28px;
 }
-
+.repos__repositories {
+    flex: 1 1 auto;
+    margin-bottom: 26px;
+}
 .repos__item:not(:last-child) {
     margin-bottom: 24px;
 }
