@@ -25,6 +25,7 @@
 .pagination__page-active {
     color: #fff;
     background: #0064eb;
+    padding: 2px 6px;
 }
 .pagination__page:not(:last-child),
 .pagination__page-active:not(:last-child) {

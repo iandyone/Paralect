@@ -2,6 +2,8 @@
     padding: 24px 32px;
     background: #ffffff;
     border-radius: 6px;
+    /*  max-height: 112px;
+    text-overflow: ellipsis; */
 }
 .repos__name {
     font-weight: 500;
@@ -13,7 +15,13 @@
 }
 .repos__description {
     font-size: 16px;
-    line-height: 125%
+    line-height: 125%;
+
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    max-width: 813px;
+    text-overflow: ellipsis;
 }
 
 @media (max-width: 480px) {
