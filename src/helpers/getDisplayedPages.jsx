@@ -2,56 +2,33 @@ export function getDisplayedPages(pages, currentPage) {
     console.log("pages", pages)
     console.log("currentPage", currentPage)
     const lastPage = pages[pages.length - 1];
-    const displayedPages = [];
 
-
-    if ((currentPage === 1)) {
-        if (pages.length === 1) {
-            return displayedPages;
-        }
-        displayedPages.push(1);
-        if (pages[currentPage + 1]) {
-            displayedPages.push(currentPage + 1);
-            if (pages[currentPage + 2]) {
-                displayedPages.push(currentPage + 2);
-            }
-        }
-    } else if (currentPage === 2) {
-        displayedPages.push(1);
-        displayedPages.push(2);
-        if (pages[currentPage + 1]) {
-            displayedPages.push(currentPage + 1);
-        }
+    if ((pages.length <= 2) && currentPage < 3) {
+        return [];
+    } else if (pages.length === 3) {
+        return [3];
+    } else if (pages.length === 4) {
+        return [3, 4];
+    } else if (pages.length === 5) {
+        return [3, 4, 5];
     } else if (currentPage === 3) {
-        if (lastPage >= 5) {
-            displayedPages.push(currentPage - 1);
-            displayedPages.push(currentPage);
-            displayedPages.push(currentPage + 1);
-        }
-        else if (lastPage === 4) {
-            displayedPages.push(currentPage - 1);
-            displayedPages.push(currentPage);
-        } else {
-            displayedPages.push(currentPage - 2);
-            displayedPages.push(currentPage - 1);
-        }
-    } else if (currentPage === pages[pages.length - 3]) {
-        displayedPages.push(currentPage - 2);
-        displayedPages.push(currentPage - 1);
-        displayedPages.push(currentPage);
-
-    } else if (currentPage === pages[pages.length - 2]) {
-        displayedPages.push(currentPage - 3);
-        displayedPages.push(currentPage - 2);
-        displayedPages.push(currentPage - 1);
-    } else if (currentPage === pages[pages.length - 1]) {
-        displayedPages.push(currentPage - 4);
-        displayedPages.push(currentPage - 3);
-        displayedPages.push(currentPage - 2);
+        return [3, 4];
     } else {
-        displayedPages.push(currentPage - 1);
-        displayedPages.push(currentPage);
-        displayedPages.push(currentPage + 1);
+        if (currentPage > 3) {
+            const displayedPages = [];
+            if (currentPage + 2 >= lastPage) {
+                displayedPages.push(lastPage - 3);
+                displayedPages.push(lastPage - 2);
+                return displayedPages;
+            }
+            displayedPages.push(currentPage - 1);
+            displayedPages.push(currentPage);
+            if ((currentPage + 2) < lastPage) {
+                displayedPages.push(currentPage + 1);
+            }
+            return displayedPages;
+        } else {
+            return [3];
+        }
     }
-    return displayedPages;
 }

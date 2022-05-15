@@ -9,24 +9,9 @@
     height: 100%;
 }
 
-.loader__picture {
-    width: 200px;
-    height: 200px;
-    height: 200px;
-    width: 200px;
-    animation: loader-spin infinite 20s linear;
-}
-
-.loader__text {
-    font-size: 25px;
-    line-height: 120%;
-    letter-spacing: 3px;
-}
-@keyframes loader-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.loader svg {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    display: inline-block;
 }

@@ -15,15 +15,14 @@ export function Pagination() {
     const reposPerPage = useSelector((store) => store.pagination.reposPerPage);
     const currentPage = useSelector((store) => store.pagination.currentPage);
     const lastPage = Math.ceil(reposCounter / reposPerPage);
-    const lastPageIndex = currentPage * reposPerPage;
-    const firstPageIndex = lastPageIndex - reposPerPage;
+    const lastRepoIndex = currentPage * reposPerPage;
+    const firstRepoIndex = lastRepoIndex - reposPerPage;
     const pages = [];
 
 
     for (let i = 1; i <= Math.ceil(reposCounter / reposPerPage); ++i) {
         pages.push(i);
     }
-
     const diplayedPages = getDisplayedPages(pages, currentPage)
 
 
@@ -42,30 +41,49 @@ export function Pagination() {
     return (
         <div className="pagination">
             <div className="pagination__pages-navigation pages-nagigation">
-                <PagesNavigation firstPageIndex={firstPageIndex} lastPageIndex={lastPageIndex} />
+                <PagesNavigation firstPageIndex={firstRepoIndex} lastPageIndex={lastRepoIndex} />
             </div>
             <ul className="pagination__pages">
                 <li className="pagination__page" onClick={() => previousPage()}>
                     <PaginationPreviousButton />
                 </li>
-                {/* <li className={(currentPage === pages[0]) ? "pagination__page-active" : "pagination__page"} onClick={() => dispatch(setCurrentPageAction(lastPage))}>FristPage ({pages[0]} )</li> */}
+
+                <li className={(currentPage === 1) ? "pagination__page-active" : "pagination__page"} onClick={() => dispatch(setCurrentPageAction(1))}>1</li>
+
+                {(pages.length >= 2) ?
+                    ((currentPage - 2) > 1) ?
+                        <li li className="pagination__page">...</li>
+                        :
+                        <li className={(currentPage === 2) ? "pagination__page-active" : "pagination__page"} onClick={() => dispatch(setCurrentPageAction(2))}>2</li>
+                    :
+                    <Fragment />
+                }
+
+
                 {diplayedPages.map((page, index) => {
                     return <li className={(currentPage === page) ? "pagination__page-active" : "pagination__page"} key={index} onClick={() => dispatch(setCurrentPageAction(page))}>{page}</li>
                 })}
 
-                {((diplayedPages[diplayedPages.length - 1]) >= 3) ?
-                    (currentPage + 3 < lastPage) ?
+
+                {(pages.length >= 5) ?
+                    ((currentPage + 4) <= lastPage) ?
                         <li className="pagination__page">...</li>
                         :
-                        <li className={(currentPage === lastPage - 1) ? "pagination__page-active" : "pagination__page"} onClick={() => dispatch(setCurrentPageAction(lastPage - 1))}>PreLastPage ({lastPage - 1})</li>
+                        <li className={(currentPage === lastPage - 1) ? "pagination__page-active" : "pagination__page"} onClick={() => dispatch(setCurrentPageAction(lastPage - 1))}>{lastPage - 1}</li>
                     :
                     <Fragment />
                 }
-                <li className={(currentPage === lastPage) ? "pagination__page-active" : "pagination__page"} onClick={() => dispatch(setCurrentPageAction(lastPage))}>Lastpage ({lastPage} )</li>
+
+                {(lastPage > 5) ?
+                    <li className={(currentPage === lastPage) ? "pagination__page-active" : "pagination__page"} onClick={() => dispatch(setCurrentPageAction(lastPage))}>{lastPage}</li>
+                    :
+                    <Fragment />
+                }
+
                 <li className="pagination__page" onClick={() => nextPage()}>
                     <PaginationNextButton lastPage={lastPage} />
                 </li>
             </ul>
-        </div>
+        </div >
     );
 } 
