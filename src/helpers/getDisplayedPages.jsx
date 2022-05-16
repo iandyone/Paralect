@@ -1,6 +1,6 @@
 export function getDisplayedPages(pages, currentPage) {
-    console.log("pages", pages)
-    console.log("currentPage", currentPage)
+    console.log("pages", pages);
+    console.log("currentPage", currentPage);
     const lastPage = pages[pages.length - 1];
 
     if ((pages.length <= 2) && currentPage < 3) {
@@ -17,6 +17,7 @@ export function getDisplayedPages(pages, currentPage) {
         if (currentPage > 3) {
             const displayedPages = [];
             if (currentPage + 2 >= lastPage) {
+                displayedPages.push(lastPage - 4);
                 displayedPages.push(lastPage - 3);
                 displayedPages.push(lastPage - 2);
                 return displayedPages;

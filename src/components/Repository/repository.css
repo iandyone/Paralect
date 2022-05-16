@@ -2,8 +2,6 @@
     padding: 24px 32px;
     background: #ffffff;
     border-radius: 6px;
-    /*  max-height: 112px;
-    text-overflow: ellipsis; */
 }
 .repos__name {
     font-weight: 500;
@@ -11,19 +9,24 @@
     line-height: 117%;
     color: #0064eb;
     margin-bottom: 16px;
-    word-wrap: break-word;
+    white-space: nowrap;
+    max-height: 28px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 813px;
+    text-overflow: ellipsis;
+    position: relative;
 }
 .repos__description {
     font-size: 16px;
     line-height: 125%;
-
-    white-space: nowrap;
+    max-height: 20px;
+    word-break: break-all;
     overflow: hidden;
     width: 100%;
     max-width: 813px;
     text-overflow: ellipsis;
 }
-
 @media (max-width: 480px) {
     .repos__item {
         padding: 20px;

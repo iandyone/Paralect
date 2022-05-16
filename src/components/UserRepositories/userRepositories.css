@@ -17,8 +17,7 @@
 .repos__item:not(:last-child) {
     margin-bottom: 24px;
 }
-
-.repos__loader {
+.repos__placeholder {
     display: flex;
     height: 100%;
 }
@@ -27,7 +26,6 @@
         align-self: stretch;
     }
 }
-
 @media (max-width: 480px) {
     .repos__title {
         font-size: 24px;

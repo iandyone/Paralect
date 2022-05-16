@@ -8,8 +8,8 @@ export function UserData() {
     const login = useSelector((store) => store.user.user.login);
     const profile = useSelector((store) => store.user.user.html_url);
     const userName = useSelector((store) => store.user.user.name) ?? login;
-    const followers = numFormatter(+useSelector((store) => store.user.user.followers));
-    const following = numFormatter(+useSelector((store) => store.user.user.following));
+    const followers = numFormatter(useSelector((store) => store.user.user.followers));
+    const following = numFormatter(useSelector((store) => store.user.user.following));
 
     return (
         <div className="user__data">

@@ -8,7 +8,7 @@ import { setRequestValueAction } from "../../store/actions/inputActions";
 
 export function Header() {
     const dispatch = useDispatch();
-    const userName = useSelector(store => store.input.userInput);
+    const userName = useSelector((store) => store.input.userInput);
 
     function getUser(e, userName) {
         e.preventDefault();
@@ -27,7 +27,7 @@ export function Header() {
                     <form action="#" className="header__form form" onSubmit={(e) => getUser(e, userName)}>
                         <Input type={"text"} id={"userInput"} className={"header__input"} placeholder={"Enter GitHub username"} />
                         <button type="submit" className="header__button">
-                            <img src={searchIcon} alt="Иконка поиска" />
+                            <img src={searchIcon} alt="Кнопка 'Найти пользователя'" />
                         </button>
                     </form>
                 </div>

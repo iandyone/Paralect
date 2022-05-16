@@ -1,4 +1,3 @@
-/* eslint-disable no-loop-func */
 import "./content.css";
 import { User } from "../User/user";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,11 +8,12 @@ import { setCurrentPageAction } from "../../store/actions/pagitationActions";
 export function Content() {
     const dispatch = useDispatch();
     const request = useSelector((store) => store.input.request);
+    const startPage = 1;
 
     function fetchUser(username) {
-        return (dispatch) => {
+        return ((dispatch) => {
             dispatch(fetchingHasStartedAction());
-            dispatch(setCurrentPageAction(1));
+            dispatch(setCurrentPageAction(startPage));
             fetch(`https://api.github.com/users/${username}`)
                 .then((response) => {
                     dispatch(setResponseStatusAction(response));
@@ -36,7 +36,7 @@ export function Content() {
                     const links = [];
 
                     for (let i = 1; i <= Math.ceil(reposCounter / 100); ++i) {
-                        links.push(fetch(`https://api.github.com/users/${username}/repos?page=${i}&per_page=100`).then((resp) => resp.json()));
+                        links.push(fetch(`https://api.github.com/users/${username}/repos?page=${i}&per_page=100`).then((response) => response.json()));
                     }
 
                     Promise.all(links)
@@ -49,7 +49,7 @@ export function Content() {
                         })
                 })
                 .catch((error) => console.log(error.message));
-        };
+        });
     }
 
     useEffect(() => {

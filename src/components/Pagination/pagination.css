@@ -1,6 +1,9 @@
 .pagination {
     align-self: flex-end;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 16px;
 }
 .pagination__pages-navigation {
     margin: 0px 20px 0px 0px;
@@ -22,6 +25,9 @@
     font-size: 14px;
     line-height: 21px;
 }
+.pagination__page:hover {
+    color: #0064eb;
+}
 .pagination__page-active {
     color: #fff;
     background: #0064eb;
@@ -30,4 +36,23 @@
 .pagination__page:not(:last-child),
 .pagination__page-active:not(:last-child) {
     margin: 0px 16px 0px 0px;
+}
+@media (max-width: 992px) {
+    .pagination__page:not(:last-child),
+    .pagination__page-active:not(:last-child) {
+        margin: 0px 13px 0px 0px;
+    }
+}
+@media (max-width: 500px) {
+    .pagination {
+        flex-direction: column;
+        align-self: center;
+        align-items: center;
+    }
+}
+@media (max-width: 480px) {
+    .pagination__page:not(:last-child),
+    .pagination__page-active:not(:last-child) {
+        margin: 0px 10px 0px 0px;
+    }
 }
