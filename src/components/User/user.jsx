@@ -12,27 +12,25 @@ export function User() {
     const responseStatus = useSelector((store) => store.user.status);
 
     useEffect(() => {
-        if (responseStatus !== 200) {
+        if (responseStatus !== 200 && responseStatus !== 0) {
             document.title = `GitHub Profiles — Not found`;
         }
     })
 
-
     return (
         <div className="content__body">
-            {
-                (isDataFetched) ?
-                    <Loader />
+            {(isDataFetched) ?
+                <Loader />
+                :
+                (responseStatus !== 200) ?
+                    <InfoPlaceholder image={userNotFoundIcon} alt={"Пользователь не найден"} text={"User not found"} />
                     :
-                    (responseStatus !== 200) ?
-                        <InfoPlaceholder image={userNotFoundIcon} alt={"Пользователь не найден"} text={"User not found"} />
-                        :
-                        <div className="content__user user">
-                            <div className="user__body">
-                                <UserData />
-                                <UserRepositories />
-                            </div>
+                    <div className="content__user user">
+                        <div className="user__body">
+                            <UserData />
+                            <UserRepositories />
                         </div>
+                    </div>
             }
         </div>
     );
