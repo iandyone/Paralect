@@ -1,6 +1,11 @@
+/** Description of the getDisplayedPages function. 
+ ** gets the current and neighboring pages from the full list of pages
+ ** param {arrow} pages - all pages array
+ ** param {number} currentPage - current page
+ ** returns an array containing the current and neighboring pages
+*/
+
 export function getDisplayedPages(pages, currentPage) {
-    console.log("pages", pages);
-    console.log("currentPage", currentPage);
     const lastPage = pages[pages.length - 1];
 
     if ((pages.length <= 2) && currentPage < 3) {

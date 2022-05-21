@@ -1,6 +1,7 @@
 import { SET_CURRENT_PAGE } from "../actions/pagitationActions";
 
 const initialState = {
+    startPage: 1,
     currentPage: 1,
     reposPerPage: 4,
 };

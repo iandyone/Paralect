@@ -2,7 +2,6 @@
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    
 }
 .repos__title {
     font-weight: 600;
@@ -11,8 +10,9 @@
     margin-bottom: 28px;
 }
 .repos__repositories {
-    flex: 1 1 auto;
+    flex: 0 1 auto;
     margin-bottom: 26px;
+    height: 520px;
 }
 .repos__item:not(:last-child) {
     margin-bottom: 24px;
@@ -24,6 +24,10 @@
 @media (max-width: 992px) {
     .repos {
         align-self: stretch;
+    }
+    .repos__repositories {
+        margin-bottom: 15px;
+        height: auto;
     }
 }
 @media (max-width: 480px) {

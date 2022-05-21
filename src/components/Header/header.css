@@ -9,6 +9,7 @@
 }
 .header__logo {
     flex: 0 0 42px;
+    cursor: pointer;
 }
 .form {
     flex: 1 1 auto;

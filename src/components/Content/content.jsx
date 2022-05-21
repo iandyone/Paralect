@@ -2,58 +2,18 @@ import "./content.css";
 import { User } from "../User/user";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchingHasStartedAction, fetchingHasDoneAction, fetchReposAction, fetchUserAction, setResponseStatusAction } from "../../store/actions/userActions";
+import { fetchUser } from "../../helpers/fetchUser";
 import { setCurrentPageAction } from "../../store/actions/pagitationActions";
 
 export function Content() {
     const dispatch = useDispatch();
     const request = useSelector((store) => store.input.request);
-    const startPage = 1;
-
-    function fetchUser(username) {
-        return ((dispatch) => {
-            dispatch(fetchingHasStartedAction());
-            dispatch(setCurrentPageAction(startPage));
-            fetch(`https://api.github.com/users/${username}`)
-                .then((response) => {
-                    dispatch(setResponseStatusAction(response));
-                    if (response.status !== 200) {
-                        dispatch(fetchingHasDoneAction());
-                        if (response.status !== 404) {
-                            throw new Error("Произошла ошибка при загрузке данных пользователя")
-                        }
-                    }
-                    return response;
-                })
-                .then((response) => response.json())
-                .then((json) => {
-                    console.log(json);
-                    dispatch(fetchUserAction(json));
-                    return json;
-                })
-                .then((json) => {
-                    const reposCounter = json.public_repos;
-                    const links = [];
-
-                    for (let i = 1; i <= Math.ceil(reposCounter / 100); ++i) {
-                        links.push(fetch(`https://api.github.com/users/${username}/repos?page=${i}&per_page=100`).then((response) => response.json()));
-                    }
-
-                    Promise.all(links)
-                        .then((responses) => {
-                            let reposList = [];
-                            responses.forEach((item) => reposList = [...reposList, ...item]);
-                            console.log("reposList: ", reposList);
-                            dispatch(fetchReposAction(reposList));
-                            dispatch(fetchingHasDoneAction());
-                        })
-                })
-                .catch((error) => console.log(error.message));
-        });
-    }
+    const startPage = useSelector((store) => store.pagination.startPage);
 
     useEffect(() => {
-        dispatch(fetchUser(request));
+        dispatch(setCurrentPageAction(startPage));
+        dispatch(fetchUser(request, startPage));
+
     })
 
     return (

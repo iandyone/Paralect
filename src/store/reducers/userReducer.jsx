@@ -1,4 +1,4 @@
-import { FETCHING_HAS_STARTED, FETCHING_HAS_DONE, FETCH_USER, SET_RESPONSE_STATUS, FETCH_REPOS } from "../actions/userActions";
+import { FETCHING_HAS_STARTED, FETCHING_HAS_DONE, FETCH_USER, SET_RESPONSE_STATUS, FETCH_REPOS, RESET_USER } from "../actions/userActions";
 
 const initialState = {
     user: [],
@@ -19,6 +19,8 @@ export function userReducer(state = initialState, action) {
             return { ...state, isFetching: true };
         case FETCHING_HAS_DONE:
             return { ...state, isFetching: false };
+        case RESET_USER:
+            return { ...initialState, isFetching: true }
         default:
             return state;
     }

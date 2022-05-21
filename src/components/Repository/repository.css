@@ -2,6 +2,7 @@
     padding: 24px 32px;
     background: #ffffff;
     border-radius: 6px;
+    position: relative;
 }
 .repos__name {
     font-weight: 500;
@@ -17,18 +18,56 @@
     text-overflow: ellipsis;
     position: relative;
 }
+.repos__name-link {
+    display: inline-block;
+    position: relative;
+    max-width: 560px;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+}
+.repos__name-link:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: #0064eb;
+    left: 50%;
+    bottom: 0px;
+    transition: all 0.2s ease-in-out;
+}
+.repos__name-link:hover::after {
+    cursor: pointer;
+    width: 100%;
+    left: 0;
+}
 .repos__description {
     font-size: 16px;
     line-height: 125%;
     max-height: 20px;
-    word-break: break-all;
     overflow: hidden;
     width: 100%;
     max-width: 813px;
-    text-overflow: ellipsis;
 }
-@media (max-width: 480px) {
+@media (max-width: 992px) {
+    .repos__name-link {
+        display: inline;
+        max-width: none;
+        width: 100%;
+        white-space: nowrap;
+    }
+    .repos__description {
+        overflow: hidden;
+        word-break: break-all;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+@media (max-width: 500px) {
     .repos__item {
         padding: 20px;
+    }
+    .repos__name {
+        margin-bottom: 10px;
     }
 }

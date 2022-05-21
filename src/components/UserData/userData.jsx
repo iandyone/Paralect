@@ -2,6 +2,7 @@ import "./userData.css";
 import { UserActivity } from "../UserActivity/userActivity";
 import { useSelector } from "react-redux";
 import { numFormatter } from "../../helpers/numFormatter";
+import { useEffect } from "react";
 
 export function UserData() {
     const avatar = useSelector((store) => store.user.user.avatar_url);
@@ -10,6 +11,10 @@ export function UserData() {
     const userName = useSelector((store) => store.user.user.name) ?? login;
     const followers = numFormatter(useSelector((store) => store.user.user.followers));
     const following = numFormatter(useSelector((store) => store.user.user.following));
+
+    useEffect(() => {
+        document.title = `GitHub Profiles — ${login}`;
+    })
 
     return (
         <div className="user__data">

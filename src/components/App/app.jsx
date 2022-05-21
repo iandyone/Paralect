@@ -9,13 +9,13 @@ export function App() {
     const showHomeScreen = useSelector((store) => store.content.showHomeScreen);
 
     return (
-            <div className="app">
-                <Header />
-                {(showHomeScreen) ?
-                    <InfoPlaceholder image={homeIcon} alt={"Главная"} text={"Start with searching  a GitHub user"} />
-                    :
-                    <Content />
-                }
-            </div>
+        <div className="app">
+            <Header />
+            {(showHomeScreen) ?
+                <InfoPlaceholder image={homeIcon} alt={"Главная"} text={"Start with searching a GitHub user"} />
+                :
+                <Content />
+            }
+        </div>
     );
 }

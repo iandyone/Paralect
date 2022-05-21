@@ -1,16 +1,47 @@
 .loader {
     align-self: center;
+    align-items: center;
     margin: 0 auto;
+    height: 75px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 15px;
     justify-content: center;
-    align-items: center;
-    row-gap: 30px;
-    height: 100%;
 }
-.loader svg {
-    width: 100px;
-    height: 100px;
-    margin: 20px;
-    display: inline-block;
+.loader__text {
+    font-size: 22px;
+    line-height: 140%;
+    text-align: center;
+    color: #808080;
+    margin: auto;
+    letter-spacing: 1.2px;
+}
+.loader__bals {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.loader__ball {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: #0064eb;
+    animation: bounce 0.5s alternate infinite;
+}
+.loader__ball:nth-child(2) {
+    animation-delay: 0.16s;
+}
+.loader__ball:nth-child(3) {
+    animation-delay: 0.32s;
+}
+@keyframes bounce {
+    from {
+        transform: scaleX(1.25);
+    }
+
+    to {
+        transform: translateY(-50px) scale(1);
+    }
 }

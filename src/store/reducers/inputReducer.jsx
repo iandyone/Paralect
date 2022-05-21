@@ -1,4 +1,4 @@
-import { SET_INPUT_VALUE, SET_REQUEST_VALUE } from "../actions/inputActions";
+import { RESET_INPUT, SET_INPUT_VALUE, SET_REQUEST_VALUE } from "../actions/inputActions";
 
 const initialState = {
     request: "",
@@ -10,6 +10,8 @@ export function inputReducer(state = initialState, action) {
             return { ...state, [action.payload.id]: action.payload.value };
         case SET_REQUEST_VALUE:
             return { ...state, request: action.payload };
+        case RESET_INPUT:
+            return { ...initialState, [action.payload]: "" };
         default:
             return state;
     }

@@ -11,7 +11,11 @@ export function Input(props) {
         dispatch(setInputValueAction({ id, value }));
     }
 
-    return (
-        <input type={props.type} id={props.id} className={props.className} placeholder={props.placeholder} value={value} onChange={(e) => setCurrentValue(e.target.id, e.target.value)} />
+    return (<input id={props.id}
+        type={props.type} 
+        className={props.className}
+        placeholder={props.placeholder} 
+        value={value}
+        onChange={(e) => setCurrentValue(e.target.id, e.target.value)} />
     );
 }

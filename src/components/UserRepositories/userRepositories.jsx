@@ -9,11 +9,6 @@ import { Pagination } from "../Pagination/pagination";
 export function UserRepositories() {
     const repos = useSelector((store) => store.user.repositories);
     const reposCounter = useSelector((store) => store.user.user.public_repos);
-    const currentPage = useSelector((store) => store.pagination.currentPage);
-    const reposPerPage = useSelector((store) => store.pagination.reposPerPage);
-    const lastRepoIndex = currentPage * reposPerPage;
-    const firstRepoIndex = lastRepoIndex - reposPerPage;
-    const displayedRepos = repos.slice(firstRepoIndex, lastRepoIndex);
 
     function getRepository(name, description, url, id) {
         return <Repository repoName={name} description={description} url={url} key={id} />;
@@ -25,8 +20,8 @@ export function UserRepositories() {
                 <Fragment>
                     <h2 className="repos__title">Repositories ({reposCounter})</h2>
                     <div className="repos__repositories">
-                        {displayedRepos.map((repository) => {
-                            return getRepository(repository.name, repository.description, repository.html_url, repository.id)
+                        {repos.map((repository) => {
+                            return getRepository(repository.name, repository.description, repository.html_url, repository.id);
                         })}
                     </div>
                     <Pagination />
