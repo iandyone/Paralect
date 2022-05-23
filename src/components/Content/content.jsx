@@ -13,7 +13,6 @@ export function Content() {
     useEffect(() => {
         dispatch(setCurrentPageAction(startPage));
         dispatch(fetchUser(request, startPage));
-
     })
 
     return (

@@ -8,6 +8,7 @@ import { resetInputAction, setRequestValueAction } from "../../store/actions/inp
 import { fetchingHasStartedAction, resetUserAction } from "../../store/actions/userActions";
 
 export function Header() {
+    const inputId = "userInput";
     const dispatch = useDispatch();
     const userName = useSelector((store) => store.input.userInput);
 
@@ -20,9 +21,8 @@ export function Header() {
     }
 
     function showStartScreen() {
-        const id = "userInput";
         document.title = `GitHub Profiles`;
-        dispatch(resetInputAction(id));
+        dispatch(resetInputAction(inputId));
         dispatch(showStartScreenAction());
     }
 
@@ -34,7 +34,7 @@ export function Header() {
                         <img src={logo} alt="Логотип" />
                     </div>
                     <form action="#" className="header__form form" onSubmit={(e) => getUser(e, userName)}>
-                        <Input id={"userInput"} type={"text"} className={"header__input"} placeholder={"Enter GitHub username"} />
+                        <Input id={inputId} type={"text"} className={"header__input"} placeholder={"Enter GitHub username"} />
                         <button type="submit" className="header__button">
                             <img src={searchIcon} alt="Кнопка 'Найти пользователя'" />
                         </button>

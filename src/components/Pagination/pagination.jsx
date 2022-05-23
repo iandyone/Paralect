@@ -15,8 +15,6 @@ export function Pagination() {
     const currentPage = useSelector((store) => store.pagination.currentPage);
     const startPage = useSelector((store) => store.pagination.startPage);
     const lastPage = Math.ceil(reposCounter / reposPerPage);
-    const lastRepoIndex = currentPage * reposPerPage;
-    const firstRepoIndex = lastRepoIndex - reposPerPage;
     const pages = [];
 
     for (let i = 1; i <= Math.ceil(reposCounter / reposPerPage); ++i) {
@@ -77,7 +75,7 @@ export function Pagination() {
     return (
         <div className="pagination">
             <div className="pagination__pages-navigation pages-nagigation">
-                <PagesNavigation firstRepoIndex={firstRepoIndex} lastRepoIndex={lastRepoIndex} />
+                <PagesNavigation />
             </div>
             <ul className="pagination__pages">
                 <li className="pagination__page" onClick={() => toPreviousPage()}>
