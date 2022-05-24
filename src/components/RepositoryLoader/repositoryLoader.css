@@ -19,7 +19,7 @@
     background-size: 400%;
     animation: shimmer 1500ms infinite;
 }
-.report__loader-item:not(:last-child) {
+.repos__loader-item:not(:last-child) {
     margin-bottom: 24px;
 }
 .loader-item__title {
@@ -40,9 +40,21 @@
         background-position: 0, 0;
     }
 }
+@media (max-width: 992px) {
+    .repos__loader {
+        height: auto;
+    }
+    .repos__loader-item:last-child {
+        margin-bottom: 0;
+    }
+}
 @media (max-width: 500px) {
     .loader-item__title {
         margin: 0px 0px 10px 0px;
+    }
+    .repos__loader-item {
+        padding: 20px;
+        height: 98px;
     }
 }
 @media (max-width: 992px) {

@@ -3,7 +3,7 @@
  ** param {string} userName - user name
 */
 
-import { fetchingHasDoneAction, fetchUserAction, resetUserAction, setResponseStatusAction } from "../store/actions/userActions";
+import { fetchingHasDoneAction, fetchUserAction, setResponseStatusAction } from "../store/actions/userActions";
 import { fetchRepos } from "./fetchRepos";
 
 export function fetchUser(userName, startPage) {
@@ -11,7 +11,6 @@ export function fetchUser(userName, startPage) {
     return ((dispatch) => {
         fetch(`${rootURL}/${userName}`)
             .then((response) => {
-                dispatch(resetUserAction());
                 dispatch(setResponseStatusAction(response));
                 if (response.status !== 200) {
                     dispatch(fetchingHasDoneAction());
